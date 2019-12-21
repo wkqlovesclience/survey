@@ -1,0 +1,60 @@
+<!--<?xml version="1.0"?>-->
+<!--<!DOCTYPE hibernate-mapping PUBLIC-->
+        <!--"-//Hibernate/Hibernate Mapping DTD 3.0//EN"-->
+        <!--"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">-->
+
+<!--&lt;!&ndash;   This mapping demonstrates content-based discrimination for the  table-per-hierarchy mapping strategy, using a formula  discriminator.&ndash;&gt;-->
+<!--<hibernate-mapping package="com.sclience.survey.common.base.entity">-->
+    <!--&lt;!&ndash;-->
+    <!--类和表的映射-->
+    <!--类名：User   表名：t_user-->
+    <!--类名要有包名，表名直接就是。-->
+    <!--有一个schema属性，是设置数据库的，但是会在hibernate的系统配置文件中设置，所以不需要再设置。-->
+   <!--&ndash;&gt;-->
+    <!--<class name="com.sclience.survey.common.base.entity.User" table="t_user">-->
+        <!--&lt;!&ndash;-->
+        <!--主键映射 属性名：id   列名：id-->
+        <!--id标签中的name属性对应的是实体类中唯一标示id，-->
+        <!--column属性对应数据表中的主键id，-->
+        <!--length可设置id字段的长度。-->
+        <!--&ndash;&gt;-->
+        <!--<id name="id" column="id" length="55">-->
+            <!--&lt;!&ndash;-->
+            <!--generator标签设置主键生成策略。-->
+            <!--(ps:①assigned：由程序员提供，无类型限制，无法确保唯一性。-->
+            <!--②uuid：由hibernate提供，类型必须是字符型 ，能确保唯一性。-->
+            <!--③increment：由hibernate提供，类型必须是数值型，有并发风险。先去数据库表查询表中id最大值：select max(id) from t_user，在该结果的基础上+1。-->
+            <!--⑤sequence：只能用于提供序列支持的数据库，如：oracle。-->
+            <!--⑥native：本地生成策略，依赖数据库特性。）-->
+            <!--&ndash;&gt;-->
+            <!--<generator class="uuid"></generator>-->
+        <!--</id>-->
+        <!--&lt;!&ndash;-->
+        <!--3 属性和字段的映射-->
+        <!--这是普通属性和普通字段的关系。-->
+        <!--property标签中，name对应实体类中的属性，-->
+        <!--type对应的是该属性在数据库中字段（列）的类型，如果不填，默认为属性name对应属性的类型，如：数据库表字段名、长度、类型都和属性password保持一致，-->
+        <!--not-null对应数据库中的不为空，非空约束，-->
+        <!--unique对应的是唯一性，唯一约束，-->
+        <!--column对应的是数据库表对应的字段名，如果不填，该字段默认为属性name对应属性的名字，如：该字段名是password，是birthday，是salary。-->
+        <!--&ndash;&gt;-->
+        <!--<property name="loginName" type="java.lang.String" length="40" not-null="true" unique="true" column="login_name"></property>-->
+        <!--<property name="shaPassword" type="java.lang.String" length="55" not-null="true" column="sha_password"></property>-->
+        <!--<property name="name" type="java.lang.String" length="40" not-null="true" column="name"></property>-->
+        <!--<property name="email" type="java.lang.String" length="40" not-null="true" unique="true" column="email"></property>-->
+        <!--<property name="birthday" type="java.util.Date" column="birthday"></property>-->
+        <!--<property name="eduQuali" type="java.lang.Integer" column="edu_quali"></property>-->
+        <!--<property name="sex" type="java.lang.Integer" column="tex"></property>-->
+        <!--<property name="status" type="java.lang.Integer" column="status" not-null="true"></property>-->
+        <!--<property name="version" type="java.lang.Integer" column="version" not-null="true"></property>-->
+        <!--<property name="createTime" type="java.util.Date" column="create_time"></property>-->
+        <!--<property name="createBy" type="java.lang.String" column="create_by"></property>-->
+        <!--<property name="lastLoginTime" type="java.util.Date" column="last_login_time"></property>-->
+        <!--<property name="cellphone" type="java.lang.String" column="cellphone"></property>-->
+        <!--<property name="activationCode" type="java.lang.String" column="activation_code"></property>-->
+        <!--<property name="findPwdCode" type="java.lang.String" column="find_pwd_code"></property>-->
+        <!--<property name="findPwdLastDate" type="java.util.Date" column="find_pwd_last_date"></property>-->
+        <!--<property name="salt" type="java.lang.String" column="salt"></property>-->
+    <!--</class>-->
+
+<!--</hibernate-mapping>-->
