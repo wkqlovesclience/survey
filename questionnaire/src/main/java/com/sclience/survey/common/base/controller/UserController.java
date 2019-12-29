@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * TODO
@@ -41,9 +42,9 @@ public class UserController{
         user.setSalt(user.getLoginName());
         Boolean result = userService.saveUser(user);
         if (result == true){
-            return "success";
+            return "redirect:login";
         }
-        return "fail";
+        return "redirect:register.jsp";
     }
 
     @RequestMapping("login")
@@ -51,25 +52,26 @@ public class UserController{
         System.out.println("开始登录......");
         //使用SecurityUtils把当前登陆的用户作为主体
         try {
+            user.setLastLoginTime(new Date());
             SecurityUtils.getSubject().login(new UsernamePasswordToken(user.getLoginName(),user.getShaPassword()));
-            return "success";
+            return "redirect:index.jsp";
         }catch (AuthenticationException e){
             System.out.println("认证没有通过......");
             //认证没有通过 1、该用户之前已经认证通过 2、账号或密码不匹配
             Subject subject = SecurityUtils.getSubject();
             if (subject.isAuthenticated()){
-                return "success";
+                return "redirect:index.jsp";
             }
-            return "fail";
+            return "redirect:login01.jsp";
         }
     }
 
-    public static void main(String[] args) {
-        Boolean result1 = false;
-        Boolean result2 = true;
-        System.out.println(result1==result2);
-        System.out.println(result1.equals(result2));
-    }
+//    public static void main(String[] args) {
+//        Boolean result1 = false;
+//        Boolean result2 = true;
+//        System.out.println(result1==result2);
+//        System.out.println(result1.equals(result2));
+//    }
 
 
 }
