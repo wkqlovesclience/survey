@@ -17,13 +17,13 @@ import javax.persistence.MappedSuperclass;
 //JPA Entity基类的标识
 @MappedSuperclass
 public abstract class IdEntity {  //implements Serializable
-
-    protected String id;
-
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid",strategy = "uuid")
     @Column(length = 55)
+    protected String id;
+
+
     public String getId() {
         return id;
     }

@@ -7,13 +7,16 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="T_USER")
-public class User extends IdEntity {
+@Table(name="t_user")
+public class User extends IdEntity{
     /**
      *  unique : 对应的是唯一性，唯一约束，
      *  name   : 对应的是数据库表对应的字段名
      *  nullable :  是否可以为空
      */
+    /*@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;*/
     @Column(name = "login_name",unique = true,nullable = false)
     private String loginName;
     @Column(name = "sha_password",nullable = false)

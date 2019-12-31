@@ -5,7 +5,19 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring-shiro.xml</param-value>
+    <!--<param-value>classpath:applicationContext.xml</param-value>-->
+  </context-param>
+  <!-- classpath*与classpath的区别:前者遍历所有的classpath加载所有符合条件的资源(效率较差)，后者只会去找第一个符合条件的资源(避免重名) -->
+  <!--     <context-param>-->
+  <!--        <description></description>-->
+  <!--        <param-name>contextConfigLocation</param-name>-->
+  <!--        <param-value>-->
+  <!--            classpath*:spring-shiro.xml-->
+  <!--        </param-value>-->
+  <!--    </context-param>-->
   <!--<context-param>-->
     <!--<param-name>contextConfigLocation</param-name>-->
     <!--<param-value>classpath:beans.xml</param-value>-->
@@ -34,6 +46,7 @@
     <filter-name>openSessionInViewFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <!-- 千万记得用这个监听器类，否则可能出现加载xml文件中的bean找不到错误 -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

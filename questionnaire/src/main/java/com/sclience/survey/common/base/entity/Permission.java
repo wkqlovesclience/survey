@@ -2,11 +2,9 @@ package com.sclience.survey.common.base.entity;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.jsoup.select.Evaluator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +17,10 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "t_permission")
-public class Permission extends IdEntity{
+public class Permission extends IdEntity {
+   /* @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;*/
     //权限名称
     @Column(name = "permission_name")
     private String permissionName;

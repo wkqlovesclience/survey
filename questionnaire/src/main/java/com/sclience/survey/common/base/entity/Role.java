@@ -16,7 +16,10 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "t_role")
-public class Role extends IdEntity{
+public class Role extends IdEntity {
+    /*@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;*/
     @Column(name = "role_name")
     private String roleName;
     @Column(name = "description" )

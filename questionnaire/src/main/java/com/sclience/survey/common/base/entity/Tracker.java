@@ -13,7 +13,7 @@ import java.util.Date;
  * @since 2019-12-05 23:11:49
  */
 @Entity
-@Table(name = "tracker")
+@Table(name = "t_tracker")
 public class Tracker extends IdEntity{
     @Column(name = "data_type")
     private String dataType;

@@ -54,5 +54,8 @@
         <!--实体类的位置-->
         <mapping class="com.sclience.survey.common.base.entity.User"/>
         <mapping class="com.sclience.survey.common.base.entity.Tracker"/>
+        <mapping class="com.sclience.survey.common.base.entity.Permission"/>
+        <mapping class="com.sclience.survey.common.base.entity.Role"/>
+
     </session-factory>
 </hibernate-configuration>
