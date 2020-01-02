@@ -1,5 +1,6 @@
 package com.sclience.survey.common.base.controller;
 
+import com.sclience.survey.common.base.entity.Role;
 import com.sclience.survey.common.base.entity.User;
 import com.sclience.survey.common.base.service.UserService;
 import org.apache.shiro.SecurityUtils;
@@ -8,11 +9,13 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  * TODO
@@ -21,34 +24,32 @@ import java.util.Date;
  * @version 1.0
  * @since 2019-12-20 17:46:41
  */
-@Controller("user")
+@RestController("user")
 public class UserController{
 
-    private User user;
     @Resource
     private UserService userService;
 
-    @RequestMapping("getModel")
-    public User getModel(){
-        user = new User();
-        return user;
-    }
+
 
     @RequestMapping("register")
-    public String register(){
+    public String register(User user){
+        System.out.println("-----------------------------------");
+        System.out.println("接收到的User对象信息："+user);
         //使用盐值对密码进行加密
-        String finalPassword = new Md5Hash(user.getShaPassword(), ByteSource.Util.bytes(user.getLoginName()), 3).toString();
+       String finalPassword = new Md5Hash(user.getShaPassword(), ByteSource.Util.bytes(user.getLoginName()), 3).toString();
         user.setShaPassword(finalPassword);
         user.setSalt(user.getLoginName());
         Boolean result = userService.saveUser(user);
         if (result == true){
             return "redirect:login";
         }
-        return "redirect:register.jsp";
+
+        return "redirect:login01.jsp";
     }
 
     @RequestMapping("login")
-    public String login(){
+    public String login(User user){
         System.out.println("开始登录......");
         //使用SecurityUtils把当前登陆的用户作为主体
         try {
@@ -65,13 +66,6 @@ public class UserController{
             return "redirect:login01.jsp";
         }
     }
-
-//    public static void main(String[] args) {
-//        Boolean result1 = false;
-//        Boolean result2 = true;
-//        System.out.println(result1==result2);
-//        System.out.println(result1.equals(result2));
-//    }
 
 
 }

@@ -6,7 +6,11 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 //import org.hibernate.classic.Session;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,18 +24,25 @@ import static org.junit.Assert.*;
 // * @version 1.0
 // * @since 2019-12-05 00:04:37
 // */
+@RunWith(SpringJUnit4ClassRunner.class)//junit整合spring的测试//立马开启了spring的注解
+@ContextConfiguration("classpath:applicationContext.xml")
 public class UserTest {
+
+
+    @Resource
+    private Session session;
+
     @Test
     public void testUser(){
         Set<Role> roles = new HashSet<Role>();
         //创建对象
-        User user = new User("zjjj", "123456", "zujj",
-                "18595585881@163.com", new Date(), 1, 1, 1, 1,
-                new Date(), "zk", new Date(), "12345678911", "cdzz",
-                "1231", new Date(), "11111",roles);
+        User user = new User("wkqadxx", "123456", "wkqadxx",
+                "18395683781@163.com", new Date(), 1, 1, 1, 1,
+                new Date(), "zk", new Date(), "12345725921", "cd21zz",
+                "12312", new Date(), "111211",roles);
         //获取加载配置管理类
 
-        Configuration configuration = new Configuration();
+        /*Configuration configuration = new Configuration();
 
         //不给参数就默认加载hibernate.cfg.xml文件，
         configuration.configure();
@@ -40,7 +51,7 @@ public class UserTest {
         SessionFactory factory = configuration.buildSessionFactory();
 
         //得到Session对象
-        Session session = factory.openSession();
+        Session session = factory.openSession();*/
 
         //使用Hibernate操作数据库，都要开启事务,得到事务对象
         Transaction transaction = session.getTransaction();

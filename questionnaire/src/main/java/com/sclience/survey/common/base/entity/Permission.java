@@ -27,7 +27,7 @@ public class Permission extends IdEntity {
     @Column(name = "validateurl",nullable = true)
     private String validateurl;
 
-    @ManyToMany(targetEntity = Role.class,mappedBy = "permissions")//让Role维护外键表
+    @ManyToMany(targetEntity = Role.class,mappedBy = "permissions",fetch = FetchType.EAGER)//让Role维护外键表
     @Cascade(CascadeType.ALL)
     private Set<Role> roles = new HashSet<Role>();
 

@@ -1,9 +1,11 @@
 package com.sclience.survey.common.base.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,6 +30,8 @@ public class User extends IdEntity{
     @Column(name = "email",unique = true,nullable = false)
     private String email;
     //出生年月
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "birthday")
     private Date birthday;
     //最高学历
@@ -42,10 +46,14 @@ public class User extends IdEntity{
     private Integer status=1;// 账号状态
     @Column(name = "version")
     private Integer version = 1;//1 默认 2测试
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "create_time")
     private Date createTime = new Date();
     @Column(name = "create_by")
     private String createBy = "";
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "last_login_time")
     private Date lastLoginTime;
     @Column(name = "cellphone",unique = true)
@@ -57,6 +65,8 @@ public class User extends IdEntity{
     //找回密码code   ""或null表示没有激活找回密码功能
     private String findPwdCode;
     //找回密码最后期限  默认设置一天之内
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "find_pwd_last_date")
     private Date findPwdLastDate;
 
@@ -64,7 +74,7 @@ public class User extends IdEntity{
     @Column(name = "salt")
     private String salt;
 
-    @ManyToMany(targetEntity = Role.class)
+    @ManyToMany(targetEntity = Role.class,fetch = FetchType.EAGER)
     // 使用JoinTabl来描述中间表，并描述中间表中外键与Student,Teacher的映射关系
     // joinColumns它是用来描述Student与中间表中的映射关系
     // inverseJoinColums它是用来描述Teacher与中间表中的映射关系

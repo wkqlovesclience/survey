@@ -4,10 +4,9 @@ import com.sclience.survey.common.base.dao.UserDao;
 import com.sclience.survey.common.base.entity.Role;
 import com.sclience.survey.common.base.entity.User;
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,7 +18,7 @@ import java.util.List;
  */
 @Repository
 public class UserDaoImpl implements UserDao {
-    @Autowired
+    @Resource
     private Session session;
 
     /**
@@ -41,7 +40,7 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public User selectUserByName(String loginName){
-        String hql = "from com.sclience.survey.common.base.entity.User u where u.loginName = ?";
+        String hql = "from com.sclience.survey.common.base.entity.User as u where u.loginName = ?0";
         User user = (User) session.createQuery(hql).setParameter(0,loginName).uniqueResult();
         session.close();
         return user;

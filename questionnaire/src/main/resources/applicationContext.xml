@@ -10,6 +10,6 @@
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd"
        default-autowire="byName">
 
-    <context:component-scan base-package="com.sclience.survey.common.base.beans"></context:component-scan>
+    <context:component-scan base-package="com.sclience.survey.common.base" />
 
 </beans>

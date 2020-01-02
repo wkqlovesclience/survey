@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.apache.shiro.realm.AuthorizingRealm;
 
+import javax.annotation.Resource;
 import java.util.Set;
 
 
@@ -24,10 +25,8 @@ import java.util.Set;
  * @version 1.0
  * @since 2019-12-19 12:52:53
  */
-@Component
-@Transactional
 public class UserRealm extends AuthorizingRealm {
-    @Autowired
+    @Resource
     private UserService userService;
 
 

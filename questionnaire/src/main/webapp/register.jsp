@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>调问-专业且开源的问卷表单系统</title>
-    <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,44 +20,44 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <form action="/register" method="post">
+            <form action="/register" method="get">
                 <div class="form-group">
-                    登录名 ：<input type="text" class="form-control" placeholder="loginName" name="loginName">
+                    登录名 ：<input type="text" placeholder="loginName" name="loginName">
                 </div>
                 <div class="form-group">
-                    密码 ：<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="shaPassword">
+                    密码 ：<input type="password" placeholder="Password" name="shaPassword">
                 </div>
                 <div class="form-group">
-                    用户名 ：<input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="name">
+                    用户名 ：<input type="text" placeholder="Name" name="name">
                 </div>
                 <div class="form-group">
-                    邮箱 ：<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
+                    邮箱 ：<input type="email" placeholder="Email" name="email">
                 </div>
                 <div class="form-group">
-                    出生年月 ：<input type="date" class="form-control" id="exampleInputBirthday1" placeholder="Birthday" name="birthday">
+                    出生年月 ：<input type="date" placeholder="Birthday" name="birthday">
                 </div>
-                <div class="form-group">
+                <div>
                     最高学历 ： <select name="eduQuali">
-                                    <option value="1" selected="selected">博士</option>
-                                    <option value="2">硕士</option>
-                                    <option value="3">本科</option>
-                                    <option value="4">专科</option>
-                                    <option value="5">高中</option>
-                                    <option value="6">其他</option>
+                                    <option value=1 selected="selected">博士</option>
+                                    <option value=2>硕士</option>
+                                    <option value=3>本科</option>
+                                    <option value=4>专科</option>
+                                    <option value=5>高中</option>
+                                    <option value=6>其他</option>
                                 </select>
                 </div>
-                <div class="form-group">
+                <div>
                     性别 ： <select name="sex">
-                                <option selected="selected">男</option>
-                                <option>女</option>
-                                <option>其他</option>
+                                <option selected="selected" value=1>男</option>
+                                <option value=2>女</option>
+                                <option value=0>其他</option>
                             </select>
                 </div>
-                <div class="form-group">
-                    联系方式 ：<input type="text" class="form-control" id="exampleInputCellphone1" placeholder="cellphone" name="cellphone">
+                <div>
+                    联系方式 ：<input type="text" placeholder="cellphone" name="cellphone">
                 </div>
-                <button type="reset" class="btn btn-default">取消</button>
-                <button type="submit" class="btn btn-default" id="login">提交</button>
+                <button type="reset">取消</button>
+                <button type="submit" id="login">提交</button>
             </form>
         </div>
         <div class="col-sm-3"></div>

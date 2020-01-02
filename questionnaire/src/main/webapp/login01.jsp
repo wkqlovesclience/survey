@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>调问-专业且开源的问卷表单系统</title>
-    <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -44,14 +43,14 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <form action="/login" method="post">
+            <form action="/loginTest" method="post">
                 <div class="form-group">
-                    邮箱 ：<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    登录名 ：<input type="text" id="exampleInputEmail1" placeholder="loginName" name="loginName">
                 </div>
                 <div class="form-group">
-                    密码 ：<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    密码 ：<input type="password" id="exampleInputPassword1" placeholder="Password" name="shaPassword">
                 </div>
-                <button type="submit" class="btn btn-default" id="login">Submit</button>
+                <button type="submit" id="login">Submit</button>
             </form>
         </div>
         <div class="col-sm-3"></div>

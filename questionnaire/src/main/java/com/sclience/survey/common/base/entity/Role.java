@@ -23,12 +23,12 @@ public class Role extends IdEntity {
     @Column(name = "role_name")
     private String roleName;
     @Column(name = "description" )
-    private String description;
-    @ManyToMany(targetEntity = User.class,mappedBy = "roles")//让user维护外键表
+    private String description;                              //fetch 默认懒加载，FetchType.EAGER：急加载1
+    @ManyToMany(targetEntity = User.class,mappedBy = "roles",fetch = FetchType.EAGER)//让user维护外键表
     @Cascade(CascadeType.ALL)
     private Set<User> users = new HashSet<User>();
 
-    @ManyToMany(targetEntity = Permission.class)
+    @ManyToMany(targetEntity = Permission.class,fetch = FetchType.EAGER)
     // 使用JoinTable来描述中间表，并描述中间表中外键与Student,Teacher的映射关系
     // joinColumns它是用来描述Student与中间表中的映射关系
     // inverseJoinColums它是用来描述Teacher与中间表中的映射关系

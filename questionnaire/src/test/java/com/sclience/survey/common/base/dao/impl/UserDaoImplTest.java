@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import javax.persistence.Table;
 
 import static org.junit.Assert.*;
@@ -24,19 +25,19 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)//junit整合spring的测试//立马开启了spring的注解
 @ContextConfiguration("classpath:applicationContext.xml")
 public class UserDaoImplTest {
-    @Autowired
+    @Resource
     private Session session;
     @Test
     public void testSelectUserByName(){
         //开启事务
         Transaction tx = session.beginTransaction();
         //核心代码
-        String loginName = "zujj";
-        String hql = "from com.sclience.survey.common.base.entity.User u where u.loginName = ?";
+        //String loginName = "wkq";
+        String hql = "from com.sclience.survey.common.base.entity.User as u where u.loginName = ?0";
 //        Query query = session.createQuery(hql);
 //        User user = (User) query.setParameter(0, loginName).uniqueResult();
 
-        User user = (User) session.createQuery(hql).setParameter(0,loginName).uniqueResult();
+        User user = (User) session.createQuery(hql).setParameter(0,"wkq").uniqueResult();
         System.out.println(user);
         //提交事务
         tx.commit();
