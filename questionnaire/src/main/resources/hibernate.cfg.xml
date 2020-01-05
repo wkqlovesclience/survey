@@ -8,7 +8,7 @@
 
         <!-- 1. 数据库连接配置 -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://47.95.198.1:3306/sclience_survey</property>
+        <property name="hibernate.connection.url">jdbc:mysql://47.95.198.1:3306/sclience_survey?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">186000</property>
         <!-- Hibernate的session管理：自动管理："jta", "thread", and "managed". -->
