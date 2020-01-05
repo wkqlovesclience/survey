@@ -11,6 +11,10 @@
         <property name="hibernate.connection.url">jdbc:mysql://47.95.198.1:3306/sclience_survey</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">186000</property>
+        <!-- Hibernate的session管理：自动管理："jta", "thread", and "managed". -->
+        <!-- 默认为：org.springframework.orm.hibernate4.SpringSessionContext-->
+        <!-- 默认时，除了手动管理，还可以交给Spring管理事务和关闭session（aop配置或注解实现） -->
+        <property name="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</property>
         <!--            数据库方法配置， hibernate在运行的时候，会根据不同的方言生成符合当前数据库语法的sql         -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <!-- 运行时是否打印 SQL -->

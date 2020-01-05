@@ -17,7 +17,7 @@ import java.util.List;
  * @since 2019-12-18 16:31:16
  */
 @Repository
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl implements UserDao{
     @Resource
     private Session session;
 
@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDao {
     public User selectUserByName(String loginName){
         String hql = "from com.sclience.survey.common.base.entity.User as u where u.loginName = ?0";
         User user = (User) session.createQuery(hql).setParameter(0,loginName).uniqueResult();
-        session.close();
+        //session.close();
         return user;
     }
 
@@ -52,15 +52,7 @@ public class UserDaoImpl implements UserDao {
      * @return 保存失败返回false，成功返回true
      */
     @Override
-    public boolean saveUser(User user) {
-        Boolean result = false;
-        try {
-            session.save(user);
-            result = true;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        session.close();
-        return result;
+    public void saveUser(User user) {
+        session.save(user);
     }
 }

@@ -22,5 +22,5 @@ public interface UserService {
      * @param user 用户对象
      * @return 保存成功返回true，失败返回false
      */
-    Boolean saveUser(User user);
+    void saveUser(User user);
 }

@@ -27,5 +27,6 @@ public class MyBeans {
     @Bean(name = "session")
     public static Session createSession(){
         return sessionFactory().openSession();
+        //return sessionFactory().getCurrentSession();
     }
 }

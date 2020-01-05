@@ -40,8 +40,8 @@ public class UserController{
        String finalPassword = new Md5Hash(user.getShaPassword(), ByteSource.Util.bytes(user.getLoginName()), 3).toString();
         user.setShaPassword(finalPassword);
         user.setSalt(user.getLoginName());
-        Boolean result = userService.saveUser(user);
-        if (result == true){
+        userService.saveUser(user);
+        if (userService.selectUserByName(user.getLoginName()) != null){
             return "redirect:login";
         }
 

@@ -44,12 +44,14 @@ public class UserServiceImplTest {
     public void testSaveUser(){
         Set<Role> roles = new HashSet<Role>();
         //创建对象
-        User user = new User("wkqaaa1dxx", "123456", "wkqaaa1dxx",
-                "18395683112@163.com", new Date(), 1, 1, 1, 1,
-                new Date(), "zk", new Date(), "12345724111", "cd21zz",
+        String loginName="wkqaaazsd1dxx";
+        User user = new User(loginName, "123456", "wkqaaaw1dxdx",
+                "18395080102@163.com", new Date(), 1, 1, 1, 1,
+                new Date(), "am", new Date(), "12345724134", "cd21zz",
                 "12312", new Date(), "111211",roles);
-        Boolean result = userService.saveUser(user);
-        System.out.println(result);
+        userService.saveUser(user);
+        //User result = userService.selectUserByName(loginName);
+       // System.out.println(result);
     }
 
 }

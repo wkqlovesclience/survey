@@ -17,7 +17,7 @@ public interface UserDao {
     User selectUserByName(String loginName);
 
     //保存用户信息
-    boolean saveUser(User user);
+    void saveUser(User user);
 
     //根据用户id获取该用户的角色信息
     List<Role> selectRoleByUserId(String userId);

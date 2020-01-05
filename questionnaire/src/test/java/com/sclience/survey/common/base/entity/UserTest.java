@@ -1,5 +1,6 @@
 package com.sclience.survey.common.base.entity;
 
+import com.sclience.survey.common.base.dao.UserDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -28,6 +29,8 @@ import static org.junit.Assert.*;
 @ContextConfiguration("classpath:applicationContext.xml")
 public class UserTest {
 
+    @Resource
+    private UserDao userDao;
 
     @Resource
     private Session session;
@@ -36,9 +39,9 @@ public class UserTest {
     public void testUser(){
         Set<Role> roles = new HashSet<Role>();
         //创建对象
-        User user = new User("wkqadxx", "123456", "wkqadxx",
-                "18395683781@163.com", new Date(), 1, 1, 1, 1,
-                new Date(), "zk", new Date(), "12345725921", "cd21zz",
+        User user = new User("wkqaq0dxx", "123456", "wkqqa0dxx",
+                "18395683080@163.com", new Date(), 1, 1, 1, 1,
+                new Date(), "zk", new Date(), "12345725121", "cd21zz",
                 "12312", new Date(), "111211",roles);
         //获取加载配置管理类
 
@@ -55,10 +58,8 @@ public class UserTest {
 
         //使用Hibernate操作数据库，都要开启事务,得到事务对象
         Transaction transaction = session.getTransaction();
-
         //开启事务
         transaction.begin();
-
         //把对象添加到数据库中
         session.save(user);
 
@@ -67,6 +68,16 @@ public class UserTest {
 
         //关闭Session
         session.close();
+    }
+    @Test
+    public void testSaveUser(){
+        Set<Role> roles = new HashSet<Role>();
+        //创建对象
+        User user = new User("wkqaq0dxx", "123456", "wkqqa0dxx",
+                "18395683080@163.com", new Date(), 1, 1, 1, 1,
+                new Date(), "zk", new Date(), "12345725121", "cd21zz",
+                "12312", new Date(), "111211",roles);
+        userDao.saveUser(user);
     }
 
 }

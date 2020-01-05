@@ -45,8 +45,14 @@ public class UserServiceImpl implements UserService {
      * @return true：保存成功，false：保存失败
      */
     @Override
-    public Boolean saveUser(User user) {
-        boolean result = userDao.saveUser(user);
-        return result;
+    @Transactional
+    public void saveUser(User user) {
+        //使用Hibernate操作数据库，都要开启事务,得到事务对象
+       // Transaction transaction = session.getTransaction();
+        //开启事务
+        //transaction.begin();
+        userDao.saveUser(user);
+        //transaction.commit();
+       // session.close();
     }
 }
