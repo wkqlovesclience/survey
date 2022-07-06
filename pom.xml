@@ -13,7 +13,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <org.springframework.version>4.1.7.RELEASE</org.springframework.version>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.9.1</shiro.version>
         <hibernate.version>5.3.7.Final</hibernate.version>
     </properties>
 
